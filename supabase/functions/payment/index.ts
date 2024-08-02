@@ -21,7 +21,6 @@ function combineMacData(obj) {
 Deno.serve(async (req) => {
   console.log("req", req);
   const privateKey = "f48e0a5c213f6e0f86307834f7cdcea9";
-  const APP_ID = "3533747193070123639";
 
   const supabaseClient = createClient(
     Deno.env.get("SUPABASE_URL") ?? "",
@@ -29,8 +28,7 @@ Deno.serve(async (req) => {
   );
   const params = await req.json();
   const { data, mac } = params;
-  console.log("data", data);
-  console.log("mac", mac);
+
   const dataMac = combineMacData({
     appId: data.appId,
     orderId: data.orderId,
